@@ -64,10 +64,6 @@ app.include_router(
     dependencies=[Depends(verify_token)]
 )
 
-# @app.get("/willy/{loanid}")
-# async def get_user_by_loanid(loanid: str):
-#     return {"loanid": loanid}
-
 
 example_input_cifno = json.dumps({
     "loanid": "100002",
