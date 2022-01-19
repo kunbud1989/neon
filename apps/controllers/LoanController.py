@@ -60,14 +60,14 @@ class ControllerLoan(object):
         return result
 
     @classmethod
-    def rendi_post(cls, input_data=None):
+    def rendi(cls, input_data=None):
         input_data = RequestLoanStatus(**input_data)
         result = BaseResponse()
         result.status = 400
 
         try:
             if (input_data.loan_status is not None) and (input_data.loan_status is not None):
-                data = Loan.where('loan_status', '=', input_data.loan_status).or_where('loan_type', '=', input_data.loan_type).get().serialize()
+                data = Loan.where('loan_status', '=', input_data.loan_status).where('loan_type', '=', input_data.loan_type).get().serialize()
                 result.status = 200
                 result.message = "Success"
                 result.data = ResponseLoanStatus(**{"status_list": data})
