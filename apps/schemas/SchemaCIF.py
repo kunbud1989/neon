@@ -6,8 +6,8 @@ class RequestCIF(BaseModel):
     cif: str = None
 
 class RequestLoanStatus(BaseModel):
-    loan_status: str = None
-    loan_type: str = None
+    loan_status: int = None
+    loan_type: int = None
 
 class CIF(BaseModel):
     loanid: str = None

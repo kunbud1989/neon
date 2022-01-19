@@ -26,8 +26,8 @@ async def get_loan_by_cif_debug(response: Response, input_data=Body(..., example
     response.status_code = result.status
     return result
 
-@router.post("/rendi_post")
-async def rendi_post(response: Response, input_data=Body(..., example=input_loan_status)):
+@router.post("/rendi")
+async def rendi(response: Response, input_data=Body(..., example=input_loan_status)):
     result = loan.rendi(input_data=input_data)
     response.status_code = result.status
     return result
