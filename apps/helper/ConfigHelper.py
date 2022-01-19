@@ -27,6 +27,7 @@ def encoder_app(text, salt):
 class Config:
     __dir_name__ = os.path.dirname(__file__)
     __file_path__ = '../../config/config.yaml'
+    # __file_path__ = 'D:\\Work\\OCBC\\neon\\config\\config.yaml'
     __file_config__ = os.path.abspath(os.path.join(__dir_name__, __file_path__))
 
     __config_yaml__ = None

@@ -1,4 +1,5 @@
-from fastapi import FastAPI, Depends, HTTPException, Security, status
+from apps.schemas.SchemaLoanid import myLoan
+from fastapi import FastAPI, Depends, HTTPException, Security, status, Response, Body
 from fastapi.security.api_key import APIKeyHeader
 from fastapi.middleware.trustedhost import TrustedHostMiddleware
 from fastapi.middleware.cors import CORSMiddleware
@@ -11,6 +12,8 @@ from fastapi.openapi.docs import (
 PARAMS = Config.PARAMS
 from apps.routers import InformationRouter, LoanRouter
 from fastapi.staticfiles import StaticFiles
+from apps.controllers.LoanidController import ControllerLoanid as loan
+import json
 
 
 API_TOKEN_NAME = "X-Api-Token"
@@ -36,7 +39,8 @@ async def custom_swagger_ui_html():
     if PARAMS.ENVIRONMENT == 'development':
         openapi_url = app.openapi_url
     elif PARAMS.ENVIRONMENT in ['staging', 'production']:
-        openapi_url = f"/neon{app.openapi_url}"
+        # openapi_url = f"/neon{app.openapi_url}"
+        openapi_url = app.openapi_url
         # openapi_url = app.openapi_url
 
     Log.info(openapi_url)
@@ -59,3 +63,14 @@ app.include_router(
     tags=["Loan"],
     dependencies=[Depends(verify_token)]
 )
+
+
+example_input_cifno = json.dumps({
+    "loanid": "100002",
+}, indent=2)
+@app.post("/willy")
+async def get_user_by_loanid(response: Response, input_data=Body(..., example=example_input_cifno)):
+    result = loan.get_user_by_loanid(input_data=input_data)
+    response.status_code = result.status
+    return result
+    

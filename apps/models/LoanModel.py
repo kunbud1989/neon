@@ -2,5 +2,5 @@ from apps.models import Model
 
 
 class Loan(Model):
-    __table__ = 'pandas_neon_dataset1'
+    __table__ = 'neon_dataset'
     __primary_key__ = 'loanid'
