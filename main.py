@@ -59,3 +59,10 @@ app.include_router(
     tags=["Loan"],
     dependencies=[Depends(verify_token)]
 )
+
+app.include_router(
+    LoanRouter.router,
+    tags=["rendi"],
+    prefix="/rendi",
+    dependencies=[Depends(verify_token)]
+)
