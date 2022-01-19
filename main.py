@@ -1,4 +1,5 @@
-from fastapi import FastAPI, Depends, HTTPException, Security, status
+from sys import prefix
+from fastapi import FastAPI, Depends, HTTPException, Security, status, Response, Body
 from fastapi.security.api_key import APIKeyHeader
 from fastapi.middleware.trustedhost import TrustedHostMiddleware
 from fastapi.middleware.cors import CORSMiddleware
@@ -9,8 +10,9 @@ from fastapi.openapi.docs import (
     get_swagger_ui_oauth2_redirect_html
 )
 PARAMS = Config.PARAMS
-from apps.routers import InformationRouter, LoanRouter
+from apps.routers import InformationRouter, LoanRouter, WillyRouter
 from fastapi.staticfiles import StaticFiles
+import json
 
 
 API_TOKEN_NAME = "X-Api-Token"
@@ -36,7 +38,8 @@ async def custom_swagger_ui_html():
     if PARAMS.ENVIRONMENT == 'development':
         openapi_url = app.openapi_url
     elif PARAMS.ENVIRONMENT in ['staging', 'production']:
-        openapi_url = f"/neon{app.openapi_url}"
+        # openapi_url = f"/neon{app.openapi_url}"
+        openapi_url = app.openapi_url
         # openapi_url = app.openapi_url
 
     Log.info(openapi_url)
@@ -61,8 +64,16 @@ app.include_router(
 )
 
 app.include_router(
+<<<<<<< HEAD
     LoanRouter.router,
     tags=["rendi"],
     prefix="/rendi",
     dependencies=[Depends(verify_token)]
 )
+=======
+    WillyRouter.router,
+    tags=["willy"],
+    prefix="/willy",
+    dependencies=[Depends(verify_token)]
+)
+>>>>>>> 94441388938a002362cd4403f738d4931a4308cc

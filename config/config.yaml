@@ -1,4 +1,4 @@
-env: "development"
+env: "production"
 apps:
   title: "API Precalculated Table for PD MODEL ETB"
   version: "1.0.0"
@@ -50,7 +50,7 @@ database:
     host: "localhost"
     port: 5432
     username: "postgres"
-    password: "example"
+    password: "neonB"
     db: "postgres"
     schema: "public"
 

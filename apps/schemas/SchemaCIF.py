@@ -1,3 +1,5 @@
+from datetime import date
+import email
 from pydantic import BaseModel
 from typing import Optional, List
 
@@ -15,6 +17,24 @@ class CIF(BaseModel):
     tenor: int  = None
     amount: int  = None
     limit: int  = None
+    type: int = None
+    status: int = None
+    interest: int = None
+    idnumber: str = None
+    firstname: str = None
+    lastname: str = None
+    dob: date = None
+    gender: str = None
+    maritalstatus: str = None
+    income: int = None
+    phone: str = None
+    email: str = None
+    phoneverified: int = None
+    emailverified: int = None
+    createdate: date = None
+    updatedate: date = None
+    source: str = None
+
 
 class Status(BaseModel):
     loanid: str = None

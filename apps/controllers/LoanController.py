@@ -66,7 +66,7 @@ class ControllerLoan(object):
         result.status = 400
 
         try:
-            if (input_data.loan_status is not None) and (input_data.loan_status is not None):
+            if (input_data.loan_status is not None) and (input_data.loan_type is not None):
                 data = Loan.where('loan_status', '=', input_data.loan_status).where('loan_type', '=', input_data.loan_type).get().serialize()
                 result.status = 200
                 result.message = "Success"
