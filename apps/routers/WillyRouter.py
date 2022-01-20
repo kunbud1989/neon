@@ -8,15 +8,18 @@ router = APIRouter()
 @router.get("/get_risky_user/{risky}")
 async def get_risky_user(response: Response, risky:int = 0):
     result = loan.get_risky_user(risky)
+    response.status_code = result.status
     return result
 
 
 input_loanid = json.dumps({
     "loanid": "100002",
+    "fname": "",
+    "lname": ""
 }, indent=2)
-@router.post("/get_user_by_loandid")
-async def get_user_by_loanid(response: Response, input_data=Body(..., example=input_loanid)):
-    result = loan.get_user_by_loanid(input_data=input_data)
+@router.post("/insert_user")
+async def insert_user(response: Response, input_data=Body(..., example=input_loanid)):
+    result = loan.insert_user(input_data=input_data)
     response.status_code = result.status
     return result
 
