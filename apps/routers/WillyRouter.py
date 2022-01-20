@@ -14,3 +14,6 @@ async def get_user_by_loanid(response: Response, input_data=Body(..., example=in
     response.status_code = result.status
     return result
 
+@router.get("/test")
+async def get_test():
+    return {"messages": "Hii"}

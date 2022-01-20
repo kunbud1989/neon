@@ -14,8 +14,6 @@ class ControllerWilly(object):
         input_data = RequestMyLoan(**input_data)
         result = BaseResponse()
         result.status = 400
-        # temp = Loan.where('loanid', '=', input_data.loanid).get().serialize()
-        # print(type(temp))
 
         try:
             if input_data.loanid is not None:
