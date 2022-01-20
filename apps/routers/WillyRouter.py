@@ -1,17 +1,14 @@
 import json
 from fastapi import APIRouter, Body, Response
-from apps.controllers.LoanidController import ControllerLoanid as loan
+from apps.controllers.WillyController import ControllerWilly as loan
 
 router = APIRouter()
 
-example_input_cifno = json.dumps({
-    "cif": "1",
-}, indent=2)
 
-input_loan_status = json.dumps({
-    "loan_status": "1",
-    "loan_type": "1"
-}, indent = 2)
+@router.get("/get_risky_user/{risky}")
+async def get_risky_user(response: Response, risky:int = 0):
+    result = loan.get_risky_user(risky)
+    return result
 
 
 input_loanid = json.dumps({
@@ -23,3 +20,13 @@ async def get_user_by_loanid(response: Response, input_data=Body(..., example=in
     response.status_code = result.status
     return result
 
+
+@router.put("/test_put")
+async def put_test():
+    
+    return {"messages": "WIP"}
+
+@router.delete("/test_delete")
+async def delete_test():
+
+    return {"messages": "WIP"}

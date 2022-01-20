@@ -3,10 +3,11 @@ import email
 from pydantic import BaseModel
 from typing import Optional, List
 
-class RequestMyLoan(BaseModel):
-    loanid: str = None
+class RequestRiskyUser(BaseModel):
+    risky: int = None
 
-class myLoan(BaseModel):
+class RiskyUser(BaseModel):
+    risky: int = None
     loanid: str = None
     loan_type: int = None
     loan_status: int = None
@@ -23,12 +24,9 @@ class myLoan(BaseModel):
     income: int = None
     phone: str = None
     email: str = None
-    isphoneverified: int = None
-    isemailverified: int = None
     createdate: date = None
     updatedate: date = None
-    risky: int = None
     source: str = None
 
-class ResponseMyLoan(BaseModel):
-    loanid_list: List[myLoan]
+class ResponseRiskyUser(BaseModel):
+    risky_list: List[RiskyUser]
