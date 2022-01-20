@@ -5,6 +5,12 @@ from apps.controllers.WillyController import ControllerWilly as loan
 router = APIRouter()
 
 
+@router.get("/get_risky_user/{risky}")
+async def get_risky_user(response: Response, risky:int = 0):
+    result = loan.get_risky_user(risky)
+    return result
+
+
 input_loanid = json.dumps({
     "loanid": "100002",
 }, indent=2)
@@ -14,6 +20,13 @@ async def get_user_by_loanid(response: Response, input_data=Body(..., example=in
     response.status_code = result.status
     return result
 
-@router.get("/test")
-async def get_test():
-    return {"messages": "Hii"}
+
+@router.put("/test_put")
+async def put_test():
+    
+    return {"messages": "WIP"}
+
+@router.delete("/test_delete")
+async def delete_test():
+
+    return {"messages": "WIP"}
