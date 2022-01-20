@@ -10,6 +10,7 @@ class RequestCIF(BaseModel):
 class RequestLoanStatus(BaseModel):
     loan_status: int = None
     loan_type: int = None
+    limit: int = None
 
 class CIF(BaseModel):
     loanid: str = None
@@ -38,18 +39,27 @@ class CIF(BaseModel):
 
 class Status(BaseModel):
     loanid: str = None
+    loan_type: int = None
+    loan_status: int = None
+    loan_amount: int  = None
+    loan_tenure: int  = None
+    interest: int = None
+    cif: str  = None
     idno: str = None
     fname: str = None
     lname: str = None
+    dob: date = None
     gender: str = None
     marital_status: str = None
     income: int = None
-    age: int = None
-    loan_type: str = None
-    loan_amount: int = None
-    loan_tenure: int = None
-    interest: int = None
-    
+    phone: str = None
+    email: str = None
+    isphoneverified: int = None
+    isemailverified: int = None
+    createdate: date = None
+    updatedate: date = None
+    source: str = None
+
 
 class ResponseLoanStatus(BaseModel):
     status_list: List[Status]
