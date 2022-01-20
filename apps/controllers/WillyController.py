@@ -19,7 +19,7 @@ class ControllerWilly(object):
 
         if input_data is not None:
             return {"test"}
-
+        
         return result
 
     @classmethod

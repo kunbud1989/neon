@@ -12,14 +12,37 @@ async def get_risky_user(response: Response, risky:int = 0):
     return result
 
 
-input_loanid = json.dumps({
-    "loanid": "100002",
-    "fname": "",
-    "lname": ""
+input_insert_data = json.dumps({
+    "loanid": None,
+    "loan_type": None,
+    "loan_status": None,
+    "loan_amount": None,
+    "loan_tenure": None,
+    "interest": None,
+    "cif": None,
+    "idno": None,
+    "fname": None,
+    "lname": None,
+    "dob": None,
+    "gender": None,
+    "marital_status": None,
+    "income": None,
+    "phone": None,
+    "email": None,
+    "isphoneverified": None,
+    "isemailverified": None,
+    "createdate": None,
+    "updatedate": None,
+    "source": None,
 }, indent=2)
 @router.post("/insert_user")
-async def insert_user(response: Response, input_data=Body(..., example=input_loanid)):
+async def insert_user(response: Response, input_data=Body(..., example=input_insert_data)):
     result = loan.insert_user(input_data=input_data)
+    temp = json.dumps({
+        "loanid": "100401",
+        "fname": 'Willy',
+        "lname": 'Tamba'
+    })
     response.status_code = result.status
     return result
 

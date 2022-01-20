@@ -13,18 +13,18 @@ class InsertUser(BaseModel):
     loan_amount: int  = None
     loan_tenure: int  = None
     interest: int = None
-    cif: str  = None
-    idno: str = None
-    fname: str = None
-    lname: str = None
-    dob: date = None
-    gender: str = None
-    marital_status: str = None
-    income: int = None
-    phone: str = None
-    email: str = None
-    createdate: date = None
-    updatedate: date = None
+    cif: Optional[str]  = None
+    idno: Optional[str] = None
+    fname: Optional[str] = None
+    lname: Optional[str] = None
+    dob: Optional[date] = None
+    gender: Optional[str] = None
+    marital_status: Optional[str] = None
+    income: Optional[int] = None
+    phone: Optional[str] = None
+    email: Optional[str] = None
+    createdate: Optional[date] = None
+    updatedate: Optional[date] = None
     source: str = None
 
 class ResponseInsertUser(BaseModel):
