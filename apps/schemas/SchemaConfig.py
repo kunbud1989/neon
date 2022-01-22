@@ -2,11 +2,11 @@ from pydantic import BaseModel
 from typing import List, Dict
 
 class Postgres(BaseModel):
-    host: str ='172.17.0.3'
-    port: int = 5432
-    username: str ='postgres'
-    password: str ='neonB'
-    db: str ='postgres'
+    host: str =''
+    port: int = None
+    username: str =''
+    password: str =''
+    db: str =''
 
 class Salt(BaseModel):
     salt: str = ''

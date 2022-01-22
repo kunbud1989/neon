@@ -1,4 +1,4 @@
-env: "production"
+env: "development"
 apps:
   title: "API Precalculated Table for PD MODEL ETB"
   version: "1.0.0"
